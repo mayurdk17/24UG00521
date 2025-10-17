@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+#define MAX 10
+
+int main() {
+    int graph[MAX][MAX];
+    int vertices, edges;
+    int i, j, u, v;
+
+    printf("Enter number of vertices: ");
+    scanf("%d", &vertices);
+
+    // Initialize matrix with 0s
+    for (i = 0; i < vertices; i++)
+        for (j = 0; j < vertices; j++)
+            graph[i][j] = 0;
+
+    printf("Enter number of edges: ");
+    scanf("%d", &edges);
+
+    printf("Enter edges (u v): \n");
+    for (i = 0; i < edges; i++) {
+        scanf("%d%d", &u, &v);
+        graph[u][v] = 1;
+        graph[v][u] = 1;  // remove for directed graph
+    }
+
+    printf("\nAdjacency Matrix:\n");
+    for (i = 0; i < vertices; i++) {
+        for (j = 0; j < vertices; j++)
+            printf("%d ", graph[i][j]);
+        printf("\n");
+    }
+
+    return 0;
+}
